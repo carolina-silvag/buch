@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import firebase from 'firebase';
-import { Row, Col, Grid } from 'react-bootstrap'
-import Navbar from './components/navbar/navbar'
-import Search from './components/search/search'
+import { Row, Col, Grid } from 'react-bootstrap';
+import Navbar from './components/navbar/navbar';
+import Search from './components/search/search';
+import Categories from './components/categories/categories';
 import './App.css';
 
 class App extends Component {
@@ -16,7 +17,9 @@ class App extends Component {
             <Col xs={12} md={12}>
               <Row className="show-grid SectionCategories">
                 <Col xs={12} md={12}>
-                  <code></code>
+                  <code>
+                    <Categories/>
+                  </code>
                 </Col>
               </Row>
               <Row className="show-grid">
