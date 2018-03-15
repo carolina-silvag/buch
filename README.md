@@ -1,12 +1,15 @@
-# Buch: El libro que quieres, ahora! 
-Bienvenido a Bunch, una plataforma donde puedes encontrar y comprar denro de una amplia gama de títulos. Sea cual sea su interés o pasión, encontraras algo interesante.
+# Buch: El libro que quieres, ¡ahora! 
+
+ * [Buch / Firebase](https://e-buch.firebaseapp.com/) 
+ 
+Bienvenido a Buch, una plataforma donde puedes encontrar y comprar una amplia gama de libros. Sea cual sea tú interés o pasión, encontraras algo interesante.
 
 ## Aquí podras:
--Buscar diferentes títulos, ya se por el nombre o accediendo a diferentes categorias ya predeterminadas.
+-Buscar diferentes títulos, ya sea por nuestro buscador o accediendo a diferentes categorias ya predeterminadas.
 
--Logear tu  perfil personal con tu cuenta de google.
+-Puedes ingresar con tu cuenta de Google.
 
--Comprar o agregar a favoritos
+-Comprar o agregar a favoritos.
 
 
 ## Dependencias:

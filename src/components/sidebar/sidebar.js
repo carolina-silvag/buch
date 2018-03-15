@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col } from 'react-bootstrap';
+import { Col, Button } from 'react-bootstrap';
 import './sidebar.css';
 
 class sidebar extends Component {
@@ -9,19 +9,19 @@ class sidebar extends Component {
         <Col xs={10} md={10} className="sidebarBox">
           <div className="authors separation">
             <h4>Autores</h4>
-            <p className="sidebarParragraph">Haruki Murakami</p>
-            <p className="sidebarParragraph">J.R.R. Tolkien</p>
-            <p className="sidebarParragraph">Stephen King</p>
-            <p className="sidebarParragraph">Anne Rice</p>
-            <p className="sidebarParragraph">Ernest Hemingway</p>
+            <Button bsStyle="link" className="sidebarParragraph">Haruki Murakami</Button>
+            <Button bsStyle="link" className="sidebarParragraph">J.R.R. Tolkien</Button>
+            <Button bsStyle="link" className="sidebarParragraph">Stephen King</Button>
+            <Button bsStyle="link" className="sidebarParragraph">Anne Rice</Button>
+            <Button bsStyle="link" className="sidebarParragraph">Ernest Hemingway</Button>
           </div>
           <div className="moreCategories separation">
             <h4> Más Categorias</h4>
-            <p className="sidebarParragraph">Religion</p>
-            <p className="sidebarParragraph">Salud</p>
-            <p className="sidebarParragraph">Humor</p>
-            <p className="sidebarParragraph">Poesía</p>
-            <p className="sidebarParragraph">Diccionarios</p>
+            <Button bsStyle="link" className="sidebarParragraph">Religión</Button>
+            <Button bsStyle="link" className="sidebarParragraph">Salud</Button>
+            <Button bsStyle="link" className="sidebarParragraph">Humor</Button>
+            <Button bsStyle="link" className="sidebarParragraph">Poesía</Button>
+            <Button bsStyle="link" className="sidebarParragraph">Diccionarios</Button>
           </div>
         </Col>
       </div>

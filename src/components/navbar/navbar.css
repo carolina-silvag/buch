@@ -7,3 +7,14 @@
     border-radius: 50%;
 }
 
+.navFont {
+    font-family: 'Courier New', Courier, monospace;
+}
+.userName{
+    color: #ee9104;
+}
+
+.warning {
+    background: #ee9104; 
+    border: 0.3em solid #ee9104;
+}

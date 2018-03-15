@@ -5,8 +5,10 @@
 
 .sidebarParragraph {
     color: #6D6767;
+    display: block;
 }
 
 .separation {
     margin-top: 2em;
+   
 }

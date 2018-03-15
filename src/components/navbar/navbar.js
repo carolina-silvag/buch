@@ -41,12 +41,15 @@ class navbar extends Component {
     if (this.state.user) {
       return (
         <div>
-          <Row className="show-grid">
+          <Row className="show-grid ">
             <Col xs={1} md={1}>
               <img src={this.state.user.photoURL} alt={this.state.user.displayName} className="userImg" />
             </Col>
+            <Col xs={4} md={4} xsOffset={1}>
+            <p className="userName">{this.state.user.displayName}</p>
+            </Col>
             <Col xs={1} md={1} xsOffset={1}>
-              <Button onClick={this.handleLogout} className="App-btn warning"> Salir </Button>
+              <Button onClick={this.handleLogout} className="App-btn" bsStyle="link"> Salir </Button>
             </Col>
           </Row>
         </div>
@@ -54,17 +57,19 @@ class navbar extends Component {
       //si el usuario no está logeado
     } else {
       return (
-        <button className="App-btn warning" onClick={this.handleAuth}> Login con Google </button>
+        <Button className="App-btn warning" onClick={this.handleAuth}> Login con Google </Button>
       );
     }
   }
 
   render() {
     return (
-      <div>
+      <div className="navFont">
         <Navbar inverse collapseOnSelect>
           <Navbar.Header >
-              <img className="logo" src={buchlogo} alt="Buch"/>
+            <Navbar.Brand>
+              <a href="#"><img className="logo" src={buchlogo} alt="Buch" /></a>
+            </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
