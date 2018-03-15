@@ -1,99 +1,70 @@
 import React, { Component } from 'react';
-import firebase, { auth, provider } from './firebase.js';
+import firebase from 'firebase';
 import './App.css';
-
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentItem: '',
-      username: '',
-      items: [],
       user: null
-    }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
+    };
+    this.handleAuth = this.handleAuth.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
   }
-  handleChange(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
-  logout() {
-    auth.signOut()
-      .then(() => {
-        this.setState({
-          user: null
-        });
-      });
-  }
-  login() {
-    auth.signInWithPopup(provider)
-      .then((result) => {
-        const user = result.user;
-        this.setState({
-          user
-        });
-      });
-  }
-  handleSubmit(e) {
-    e.preventDefault();
-    const itemsRef = firebase.database().ref('items');
-    const item = {
-      title: this.state.currentItem,
-      user: this.state.user.displayName || this.state.user.email
-    }
-    itemsRef.push(item);
-    this.setState({
-      currentItem: '',
-      username: ''
-    });
-  }
-  componentDidMount() {
 
-    auth.onAuthStateChanged((user) => {
-      if (user) {
-        this.setState({ user });
-      }
-    });
-    const itemsRef = firebase.database().ref('items');
-    itemsRef.on('value', (snapshot) => {
-      let items = snapshot.val();
-      let newState = [];
-      for (let item in items) {
-        newState.push({
-          id: item,
-          title: items[item].title,
-          user: items[item].user
-        });
-      }
-      this.setState({
-        items: newState
-      });
+  componentWillMount () {
+  
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({ user });
     });
   }
-  removeItem(itemId) {
-    const itemRef = firebase.database().ref(`/items/${itemId}`);
-    itemRef.remove();
+
+  handleAuth() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase.auth().signInWithPopup(provider)
+      .then(result => console.log(`${result.user.email} ha iniciado sesion`))
+      .catch(error => console.log(`Error ${error.code}: ${error.message} `));
   }
+
+  handleLogout () {
+    firebase.auth().signOut()
+      .then(result => console.log(`${result.user.email} ha iniciado sesión`))
+      .catch(error => console.log(`Error ${error.code}: ${error.message}`));
+  }
+  
+  renderLoginButton() {
+    //Si el usuario está logeado
+    if (this.state.user) {
+      return (
+        <div>
+          <img width="100" src={this.state.user.photoURL} alt={this.state.user.displayName} />
+          <p className="App-intro">¡Hola, { this.state.user.displayName }!</p>
+          <button onClick={this.handleLogout} className="App-btn"> Salir </button>
+        </div>
+      );
+      //si el usuario no está logeado
+    } else {
+      return (
+      <button onClick={this.handleAuth}> Login con Google </button>
+      );
+    }
+  }
+
   render() {
     return (
-      <div className='app'>
-        <header>
-          <div className="wrapper">
-            <h1>Fun Food Friends</h1>
-            {this.state.user ?
-              <button onClick={this.logout}>Logout</button>
-              :
-              <button onClick={this.login}>Log In</button>
-            }
-          </div>
-        </header>
+      <div className="App">
+        <div className="App-header">
+          <h2>Buch</h2>
+        </div>
+        <p className="App-intro">
+          {this.renderLoginButton()}
+        </p>
       </div>
     );
   }
 }
+
+
+
 export default App;
