@@ -1,0 +1,12 @@
+.sidebarBox {
+    border-right: 0.1em solid #6D6767;
+    text-align: left;
+}
+
+.sidebarParragraph {
+    color: #6D6767;
+}
+
+.separation {
+    margin-top: 2em;
+}

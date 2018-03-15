@@ -1,3 +1,8 @@
 .categoryIcon {
     width: 3em;
 }
+
+.categoryBox {
+    border-bottom: 0.1em solid #6D6767;
+    text-align: center;
+}

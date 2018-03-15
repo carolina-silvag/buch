@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavItem, Navbar, Nav, NavDropdown, MenuItem, Grid, Row, Col, Button } from 'react-bootstrap';
+import { NavItem, Navbar, Nav, NavDropdown, MenuItem, Row, Col, Button } from 'react-bootstrap';
 import firebase from 'firebase';
 import buchlogo from './buchlogo.png';
 import './navbar.css';
@@ -46,7 +46,7 @@ class navbar extends Component {
               <img src={this.state.user.photoURL} alt={this.state.user.displayName} className="userImg" />
             </Col>
             <Col xs={1} md={1} xsOffset={1}>
-              <Button onClick={this.handleLogout} className="App-btn" bsStyle="warning"> Salir </Button>
+              <Button onClick={this.handleLogout} className="App-btn warning"> Salir </Button>
             </Col>
           </Row>
         </div>
@@ -54,7 +54,7 @@ class navbar extends Component {
       //si el usuario no está logeado
     } else {
       return (
-        <button bsStyle="warning" onClick={this.handleAuth}> Login con Google </button>
+        <button className="App-btn warning" onClick={this.handleAuth}> Login con Google </button>
       );
     }
   }
@@ -64,9 +64,7 @@ class navbar extends Component {
       <div>
         <Navbar inverse collapseOnSelect>
           <Navbar.Header >
-            <Navbar.Brand>
-              <a href="#"><img className="logo" src={buchlogo} /></a>
-            </Navbar.Brand>
+              <img className="logo" src={buchlogo} alt="Buch"/>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
