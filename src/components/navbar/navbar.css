@@ -1,3 +1,9 @@
 .logo {
     width: 4em;
 }
+
+.userImg {
+    width: 2.5em;
+    border-radius: 50%;
+}
+

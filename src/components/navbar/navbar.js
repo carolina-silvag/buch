@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavItem, Navbar, Nav, NavDropdown, MenuItem } from 'react-bootstrap';
+import { NavItem, Navbar, Nav, NavDropdown, MenuItem, Grid, Row, Col } from 'react-bootstrap';
 import firebase from 'firebase';
 import buchlogo from './buchlogo.png';
 import './navbar.css';
@@ -15,8 +15,8 @@ class navbar extends Component {
     this.handleLogout = this.handleLogout.bind(this);
   }
 
-  componentWillMount () {
-  
+  componentWillMount() {
+
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ user });
     });
@@ -30,26 +30,31 @@ class navbar extends Component {
       .catch(error => console.log(`Error ${error.code}: ${error.message} `));
   }
 
-  handleLogout () {
+  handleLogout() {
     firebase.auth().signOut()
       .then(result => console.log(`${result.user.email} ha iniciado sesión`))
       .catch(error => console.log(`Error ${error.code}: ${error.message}`));
   }
-  
+
   renderLoginButton() {
     //Si el usuario está logeado
     if (this.state.user) {
       return (
         <div>
-          <img width="100" src={this.state.user.photoURL} alt={this.state.user.displayName} />
-          <p className="App-intro">¡Hola, { this.state.user.displayName }!</p>
-          <button onClick={this.handleLogout} className="App-btn"> Salir </button>
+          <Row className="show-grid">
+            <Col xs={1} md={1}>
+              <img src={this.state.user.photoURL} alt={this.state.user.displayName} className="userImg" />
+            </Col>
+            <Col xs={1} md={1} xsOffset={1}>
+              <button onClick={this.handleLogout} className="App-btn" bsStyle="warning"> Salir </button>
+            </Col>
+          </Row>
         </div>
       );
       //si el usuario no está logeado
     } else {
       return (
-      <button onClick={this.handleAuth}> Login con Google </button>
+        <button bsStyle="warning" onClick={this.handleAuth}> Login con Google </button>
       );
     }
   }
@@ -79,11 +84,8 @@ class navbar extends Component {
             </Nav>
             <Nav pullRight>
               <NavItem eventKey={1} href="#">
-                Link Right
-      </NavItem>
-              <NavItem eventKey={2} href="#">
-              {this.renderLoginButton()}
-      </NavItem>
+                {this.renderLoginButton()}
+              </NavItem>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
