@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import { FormGroup, FormControl, Button } from 'react-bootstrap'
 
 let url = `https://www.googleapis.com/books/v1/volumes?q=`;
-let name = 'ciencia'
-
+let name = 'literatura'
 class search extends Component {
-  constructor() {
-    super();
+  constructor(prop) {
+    super(prop);
     this.state = {
+      text: '',
       searchData: null
     };
+
+    this.handleSearch = this.handleSearch.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentWillMount() {
@@ -17,19 +20,54 @@ class search extends Component {
   }
 
   randomize() {
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=harry+potter&callback=handleResponse`).then(data => (data.json()))
-    .then(search_data => {
-      console.log(search_data);
-      const SearchData = search_data;
-      /*const SearchData = transformForecast(weather_data);*/
-      console.log(SearchData, 'guardando en data');
-      /*this.setState({forecastData});*/
-    })
-      .catch(error => console.log(error))
+    if (!this.state.text.length) {
+      fetch(`${url}${name}`, {
+        method: 'get'
+      })
+      .then(data => data.json())
+      .then(search_data => {
+        console.log(search_data);
+        const SearchData = search_data;
+
+        this.setState({ searchData: search_data });
+      })
+        .catch(error => console.log(error))
+
+    } else {
+
+      fetch(`${url}${this.state.text}`, {
+        method: 'get'
+      })
+      .then(data => data.json())
+      .then(search_data => {
+        console.log(search_data);
+        const searchData = search_data;
+        
+        this.setState({ searchData: search_data });
+      })
+        .catch(error => console.log(error))
+
+    }
   }
-  /*componentDidMount() {
-    this.updateSearch(this.props.search);
-  }*/
+
+  handleSearch(event) {
+    event.preventDefault();
+    if (!this.state.text.length) {
+      return;
+    }
+    const newItem = {
+      text: this.state.text,
+      id: Date.now()
+    };
+    this.setState(prevState => ({
+      text: ''
+    }));
+    this.randomize();
+  }
+
+  handleChange(event) {
+    this.setState({ text: event.target.value });
+  }
 
   /*componentWillReceiveProps(nextProps) {
     if (nextProps.city !== this.props.city) {
@@ -40,17 +78,17 @@ class search extends Component {
     }
   }*/
 
-  updateSearch = () => {
-    const url_search = `ciencia&callback=handleResponse`;
+  /*updateSearch = () => {
+    const url_search = `${url}${name}`;
     fetch(url_search).then(data => (data.json()))
     .then(search_data => {
       console.log(search_data);
       const SearchData = search_data;
-      /*const SearchData = transformForecast(weather_data);*/
-      console.log(SearchData, 'guardando en data');
-      /*this.setState({forecastData});*/
+      const SearchData = transformForecast(weather_data);
+ 
+      this.setState({forecastData});
     });
-  }
+  }*/
 
   /*renderForcastItemDays(forecastData) {
     return forecastData.map(forecast => (
@@ -81,7 +119,7 @@ class search extends Component {
     return(
       <div>
         <FormGroup>
-          <FormControl type="text" placeholder="Search" />
+          <FormControl type="text" placeholder="Search" onChange={this.handleChange} data-categoria="literatura" value={this.state.text} />
         </FormGroup>{''}
         <Button type="submit" onClick={this.handleSearch}>Buscar</Button>
       </div>
