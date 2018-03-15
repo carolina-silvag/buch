@@ -1,42 +1,94 @@
 import React, { Component } from 'react';
-import { Navbar, NavDropdown, MenuItem, Nav, NavItem } from 'react-bootstrap';
+import { NavItem, Navbar, Nav, NavDropdown, MenuItem } from 'react-bootstrap';
+import firebase from 'firebase';
+import buchlogo from './buchlogo.png';
+import './navbar.css';
 
 class navbar extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      user: null
+    };
+    this.handleAuth = this.handleAuth.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
+  componentWillMount () {
+  
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({ user });
+    });
+  }
+
+  handleAuth() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase.auth().signInWithPopup(provider)
+      .then(result => console.log(`${result.user.email} ha iniciado sesion`))
+      .catch(error => console.log(`Error ${error.code}: ${error.message} `));
+  }
+
+  handleLogout () {
+    firebase.auth().signOut()
+      .then(result => console.log(`${result.user.email} ha iniciado sesión`))
+      .catch(error => console.log(`Error ${error.code}: ${error.message}`));
+  }
+  
+  renderLoginButton() {
+    //Si el usuario está logeado
+    if (this.state.user) {
+      return (
+        <div>
+          <img width="100" src={this.state.user.photoURL} alt={this.state.user.displayName} />
+          <p className="App-intro">¡Hola, { this.state.user.displayName }!</p>
+          <button onClick={this.handleLogout} className="App-btn"> Salir </button>
+        </div>
+      );
+      //si el usuario no está logeado
+    } else {
+      return (
+      <button onClick={this.handleAuth}> Login con Google </button>
+      );
+    }
+  }
+
   render() {
     return (
-      <Navbar inverse collapseOnSelect>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <a href="#brand">React-Bootstrap</a>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <NavItem eventKey={1} href="#">
-              Link
+      <div>
+        <Navbar inverse collapseOnSelect>
+          <Navbar.Header >
+            <Navbar.Brand>
+              <a href="#"><img className="logo" src={buchlogo} /></a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Navbar.Header>
+          <Navbar.Collapse>
+            <Nav>
+              <NavItem eventKey={2} href="#">
+                Link
       </NavItem>
-            <NavItem eventKey={2} href="#">
-              Link
+              <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+                <MenuItem eventKey={3.1}>Action</MenuItem>
+                <MenuItem eventKey={3.2}>Another action</MenuItem>
+                <MenuItem eventKey={3.3}>Something else here</MenuItem>
+                <MenuItem divider />
+                <MenuItem eventKey={3.3}>Separated link</MenuItem>
+              </NavDropdown>
+            </Nav>
+            <Nav pullRight>
+              <NavItem eventKey={1} href="#">
+                Link Right
       </NavItem>
-            <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Action</MenuItem>
-              <MenuItem eventKey={3.2}>Another action</MenuItem>
-              <MenuItem eventKey={3.3}>Something else here</MenuItem>
-              <MenuItem divider />
-              <MenuItem eventKey={3.3}>Separated link</MenuItem>
-            </NavDropdown>
-          </Nav>
-          <Nav pullRight>
-            <NavItem eventKey={1} href="#">
-              Link Right
+              <NavItem eventKey={2} href="#">
+              {this.renderLoginButton()}
       </NavItem>
-            <NavItem eventKey={2} href="#">
-              Link Right
-      </NavItem>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+      </div>
+
     );
   }
 }
