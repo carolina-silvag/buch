@@ -32,30 +32,30 @@ class App extends Component {
             <Col xs={12} md={12}>
               <Row className="show-grid SectionCategories">
                 <Col xs={12} md={12}>
-                  <code>
+                  <div>
                     <Categories onUpdateBooksData={this.handleBooksData}/>
-                  </code>
+                  </div>
                 </Col>
               </Row>
               <Row className="show-grid">
                 <Col xs={3} md={3} className="SectionSidebar">
-                  <code>
+                  <div>
                     <Sidebar onUpdateBooksData={this.handleBooksData}/>
-                  </code>
+                  </div>
                 </Col>
                 <Col xs={12} sm={12} md={9} lg={9} className="SearchBooks">
                   <Row className="show-grid Search">
                     <Col md={12} xs={12}>
-                      <code>
+                      <div>
                         <Search onUpdateBooksData={this.handleBooksData}/>
-                      </code>
+                      </div>
                     </Col>
                   </Row>
                   <Row className="show-grid Books">
                     <Col md={12} xs={12}>
-                      <code>
+                      <div>
                         <Books data={booksData} />
-                      </code>
+                      </div>
                     </Col>
                   </Row>
                 </Col>

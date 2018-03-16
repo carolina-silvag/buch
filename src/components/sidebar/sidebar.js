@@ -34,9 +34,9 @@ class sidebar extends Component {
 
   render() {
     return (
-      <div>
+      <div  className="sidebarBox">
         <Hidden xs sm>
-          <Col xs={10} md={10} className="sidebarBox">
+          <Col xs={10} md={10}>
             <div className="authors separation">
               <h4>Autores</h4>
               <Button bsStyle="link" className="sidebarParragraph" data="Haruki Mukarami" value="Haruki Mukarami" onClick={() => this.handleAuthor('Haruki Mukarami')}>Haruki Murakami</Button>
@@ -52,6 +52,14 @@ class sidebar extends Component {
               <Button bsStyle="link" className="sidebarParragraph" data="Poesía" value="Poesía" onClick={() => this.handleAuthor('Poesía')}>Poesía</Button>
               <Button bsStyle="link" className="sidebarParragraph" data="Diccionarios" value="Diccionarios" onClick={() => this.handleAuthor('Diccionarios')}>Diccionarios</Button>
               <Button bsStyle="link" className="sidebarParragraph" data="Humor" value="Humor" onClick={() => this.handleAuthor('Humor')}>Humor</Button>
+            </div>
+            <div className="bestSelling separation">
+              <h4> Más Vendidos</h4>
+              <Button bsStyle="link" className="sidebarParragraph" data="Call me by your name" value="Call me by your name" onClick={() => this.handleAuthor('Call me by your name')}>Call me by your name</Button>
+              <Button bsStyle="link" className="sidebarParragraph" data="Harry Potter" value="Harry Potter" onClick={() => this.handleAuthor('Harry Potter')}>Harry Potter</Button>
+              <Button bsStyle="link" className="sidebarParragraph" data="Game Of Thrones" value="Game Of Thrones" onClick={() => this.handleAuthor('Game Of Thrones')}>Game Of Thrones</Button>
+              <Button bsStyle="link" className="sidebarParragraph" data="Divergente" value="Divergente" onClick={() => this.handleAuthor('Divergente')}>Divergente</Button>
+              <Button bsStyle="link" className="sidebarParragraph" data="Lego" value="Lego" onClick={() => this.handleAuthor('Lego')}>Lego</Button>
             </div>
           </Col>
         </Hidden>
