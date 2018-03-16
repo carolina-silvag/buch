@@ -12,7 +12,7 @@ class books extends Component {
       return <Col className="cols" md={4} key={book.id}>
                 <h4>{book.title}</h4>
                 <img src={book.image}/>
-                <p>{book.authors}</p>
+                <p>{book.author}</p>
                 <p>{book.price}</p>
               </Col>
     })

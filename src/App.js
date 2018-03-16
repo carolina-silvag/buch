@@ -33,7 +33,7 @@ class App extends Component {
               <Row className="show-grid SectionCategories">
                 <Col xs={12} md={12}>
                   <code>
-                    <Categories/>
+                    <Categories onUpdateBooksData={this.handleBooksData}/>
                   </code>
                 </Col>
               </Row>
