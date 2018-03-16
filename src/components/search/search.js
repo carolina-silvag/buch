@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl, Button } from 'react-bootstrap'
+import { FormGroup, FormControl, Button } from 'react-bootstrap';
+import booksData from './../books/booksData';
 
 let url = `https://www.googleapis.com/books/v1/volumes?q=`;
 let name = 'literatura'
+
 class search extends Component {
   constructor(prop) {
     super(prop);
     this.state = {
       text: '',
-      searchData: null
+      searchData: []
     };
 
     this.handleSearch = this.handleSearch.bind(this);
@@ -26,10 +28,9 @@ class search extends Component {
       })
       .then(data => data.json())
       .then(search_data => {
-        console.log(search_data);
-        const SearchData = search_data;
-
-        this.setState({ searchData: search_data });
+        const data = booksData(search_data);
+        this.setState({ searchData: data });
+        this.props.onUpdateBooksData(data);
       })
         .catch(error => console.log(error))
 
@@ -41,12 +42,11 @@ class search extends Component {
       .then(data => data.json())
       .then(search_data => {
         console.log(search_data);
-        const searchData = search_data;
-        
-        this.setState({ searchData: search_data });
+        const data = booksData(search_data);
+        this.setState({ searchData: data });
+        this.props.onUpdateBooksData(data);
       })
         .catch(error => console.log(error))
-
     }
   }
 
@@ -56,8 +56,7 @@ class search extends Component {
       return;
     }
     const newItem = {
-      text: this.state.text,
-      id: Date.now()
+      text: this.state.text
     };
     this.setState(prevState => ({
       text: ''
@@ -69,67 +68,18 @@ class search extends Component {
     this.setState({ text: event.target.value });
   }
 
-  /*componentWillReceiveProps(nextProps) {
-    if (nextProps.city !== this.props.city) {
-      this.setState({
-        searchData: null,
-      })
-      this.updateBook(nextProps.city);
-    }
-  }*/
-
-  /*updateSearch = () => {
-    const url_search = `${url}${name}`;
-    fetch(url_search).then(data => (data.json()))
-    .then(search_data => {
-      console.log(search_data);
-      const SearchData = search_data;
-      const SearchData = transformForecast(weather_data);
- 
-      this.setState({forecastData});
-    });
-  }*/
-
-  /*renderForcastItemDays(forecastData) {
-    return forecastData.map(forecast => (
-      <ForecastItem key={`${forecast.weekDay}${forecast.hour}`} weekDay = {forecast.weekDay} hour = {forecast.hour} data = {forecast.data}>
-      </ForecastItem>
-    ))
-    // return days.map(day => (<ForecastItem key = {day} weekDay = {day} hour = {10} data = {data}></ForecastItem>))
-      // <ForecastItem weekDay={'Miércoles'}>
-      // </ForecastItem>
-  };
-
-  renderProgress = () => {
-    return (<h3> Cargando pronóstico extendido... </h3>)
-  }
-
   render() {
-    const {city} = this.props;
-    const {forecastData} = this.state;
-    return(
-    <div>
-      <h2 className="forecastTitle">Pronóstico extendido para {city}</h2>
-      {forecastData !== null ? this.renderForcastItemDays(forecastData) : this.renderProgress()}
-    </div>
-    );
-  }*/
-
-  render() {
+    const { searchData } = this.state;
     return(
       <div>
         <FormGroup>
-          <FormControl type="text" placeholder="Search" onChange={this.handleChange} data-categoria="literatura" value={this.state.text} />
+          <FormControl type="text" placeholder="Search" onChange={this.handleChange} value={this.state.text} />
         </FormGroup>{''}
         <Button type="submit" onClick={this.handleSearch}>Buscar</Button>
       </div>
       )
     }
   }
-
-/*ForecastExtended.propTypes = {
-  city: PropTypes.string.isRequired,
-}*/
-
+        // {searchData.map(book=>{return <li>{book.title}</li>})}
 
 export default search;

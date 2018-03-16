@@ -3,12 +3,27 @@ import { Row, Col, Grid } from 'react-bootstrap';
 import Navbar from './components/navbar/navbar';
 import Search from './components/search/search';
 import Categories from './components/categories/categories';
-import Sidebar from './components/sidebar/sidebar'
+import Sidebar from './components/sidebar/sidebar';
+import Books from './components/books/books';
 import './App.css';
 
 class App extends Component {
+
+  constructor(prop) {
+    super(prop);
+    this.state = {
+      booksData: []
+    };
+    this.handleBooksData = this.handleBooksData.bind(this)
+  }
+
+  handleBooksData(data) {
+    console.log('me llego', data);
+    this.setState({ booksData: data })
+  }
   
   render() {
+    const { booksData } = this.state;
     return (
       <div className="App">
         <Navbar/>
@@ -32,13 +47,15 @@ class App extends Component {
                   <Row className="show-grid Search">
                     <Col md={12} xs={12}>
                       <code>
-                        <Search/>
+                        <Search onUpdateBooksData={this.handleBooksData}/>
                       </code>
                     </Col>
                   </Row>
                   <Row className="show-grid Books">
                     <Col md={12} xs={12}>
-                      <code></code>
+                      <code>
+                        <Books data={booksData} />
+                      </code>
                     </Col>
                   </Row>
                 </Col>
