@@ -18,7 +18,7 @@ class sidebar extends Component {
     this.handleAuthor = this.handleAuthor.bind(this);
   }
 
-  handleAuthorgit(category) {
+  handleAuthor(category) {
     fetch(`${url}${category}`, {
       method: 'get'
     })
