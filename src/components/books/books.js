@@ -19,8 +19,7 @@ class books extends Component {
                 <img src={book.image}/>
                 <p>{book.author}</p>
                 <p>{book.price}</p>
-                <ModalCompra/>
-            
+                <ModalCompra data={book.http}/>
               </Col>
     })
   };
@@ -28,10 +27,10 @@ class books extends Component {
 
   render() {
     const { data } = this.props;
+    console.log(data, 'books')
     return(
       <Row>
-          {this.renderBookItem(data)}
-         
+          {this.renderBookItem(data)}       
       </Row>
       )
     }
