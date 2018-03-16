@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
-import { Col, Grid, Row, p, h4, img } from 'react-bootstrap';
+import { Col, Grid, Row, p, h4, img, Button, Modal} from 'react-bootstrap';
+import ModalCompra from './../modal/modal'
 import './books.css';
 
 class books extends Component {
-  constructor() {
-    super();
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      lgShow: false
+    };
   }
 
   renderBookItem(booksData) {
@@ -14,6 +19,8 @@ class books extends Component {
                 <img src={book.image}/>
                 <p>{book.author}</p>
                 <p>{book.price}</p>
+                <ModalCompra/>
+            
               </Col>
     })
   };
@@ -24,6 +31,7 @@ class books extends Component {
     return(
       <Row>
           {this.renderBookItem(data)}
+         
       </Row>
       )
     }

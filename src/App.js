@@ -3,7 +3,7 @@ import { Row, Col, Grid } from 'react-bootstrap';
 import Navbar from './components/navbar/navbar';
 import Search from './components/search/search';
 import Categories from './components/categories/categories';
-import Sidebar from './components/sidebar/sidebar';
+/*import Sidebar from './components/sidebar/sidebar';*/
 import Books from './components/books/books';
 import './App.css';
 
@@ -40,7 +40,7 @@ class App extends Component {
               <Row className="show-grid">
                 <Col xs={3} md={3} className="SectionSidebar">
                   <code>
-                    <Sidebar onUpdateBooksData={this.handleBooksData}/>
+                   
                   </code>
                 </Col>
                 <Col xs={12} sm={12} md={9} lg={9} className="SearchBooks">
