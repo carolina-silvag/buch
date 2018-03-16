@@ -62,67 +62,67 @@ class categories extends Component {
             <Col xs={1} md={1}>
               <a href="#" data="arte" value="arte" onClick={() => this.handleCategory('arte')}>
                 <img src={arte} className="categoryIcon" alt="" />
-                <p>Arte</p>
+                <p className="categoryLink">Arte</p>
               </a>
             </Col>
             <Col xs={1} md={1}>
               <a href="#" data="biografias" value="biografias" onClick={() => this.handleCategory('biografias')}>
                 <img src={biografias} className="categoryIcon" alt="" />
-                <p>Biografias</p>
+                <p className="categoryLink">Biografias</p>
               </a>
             </Col>
             <Col xs={1} md={1}>
               <a href="#" data="infantiles" value="infantiles" onClick={() => this.handleCategory('infantiles')}>
                 <img src={infantiles} className="categoryIcon" alt="" />
-                <p>Infantiles</p>
+                <p className="categoryLink">Infantiles</p>
               </a>
             </Col>
             <Col xs={1} md={1}>
               <a href="#" data="cocina" value="cocina" onClick={() => this.handleCategory('cocina')}>
                 <img src={cocina} className="categoryIcon" alt="" />
-                <p>Cocina</p>
+                <p className="categoryLink">Cocina</p>
               </a>
             </Col>
             <Col xs={1} md={1}>
               <a href="#" data="comic" value="comic" onClick={() => this.handleCategory('comic')}>
                 <img src={comic} className="categoryIcon" alt="" />
-                <p>Comic</p>
+                <p className="categoryLink">Comic</p>
               </a>
             </Col>
             <Col xs={1} md={1}>
               <a href="#" data="literatura" value="literatura" onClick={() => this.handleCategory('literatura')}>
                 <img src={literatura} className="categoryIcon" alt="" />
-                <p>Literatura</p>
+                <p className="categoryLink">Literatura</p>
               </a>
             </Col>
             <Col xs={1} md={1}>
               <a href="#" data="historia" value="historia" onClick={() => this.handleCategory('historia')}>
                 <img src={historia} className="categoryIcon" alt="" />
-                <p>Historia</p>
+                <p className="categoryLink">Historia</p>
               </a>
             </Col>
             <Col xs={1} md={1}>
               <a href="#" data="misterio" value="misterio" onClick={() => this.handleCategory('misterio')}>
                 <img src={misterio} className="categoryIcon" alt="" />
-                <p>Misterio</p>
+                <p className="categoryLink">Misterio</p>
               </a>
             </Col>
             <Col xs={1} md={1}>
               <a href="#" data="negocios" value="negocios" onClick={() => this.handleCategory('negocios')}>
                 <img src={negocios} className="categoryIcon" alt="" />
-                <p>Negocios</p>
+                <p className="categoryLink">Negocios</p>
               </a>
             </Col>
             <Col xs={1} md={1}>
               <a href="#" data="romance" value="romance" onClick={() => this.handleCategory('romance')}>
                 <img src={romance} className="categoryIcon" alt="" />
-                <p>Romance</p>
+                <p className="categoryLink">Romance</p>
               </a>
             </Col>
             <Col xs={1} md={1}>
               <a href="#" data="Sci-Fi" value="Sci-Fi" onClick={() => this.handleCategory('Sci-Fi')}>
                 <img src={scifi} className="categoryIcon" alt="" />
-                <p>Sci-Fi</p>
+                <p className="categoryLink">Sci-Fi</p>
               </a>
             </Col>
           </Row>
