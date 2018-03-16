@@ -43,7 +43,7 @@ class App extends Component {
                     <Sidebar/>
                   </code>
                 </Col>
-                <Col xs={9} md={9} className="SearchBooks">
+                <Col xs={12} sm={12} md={9} lg={9} className="SearchBooks">
                   <Row className="show-grid Search">
                     <Col md={12} xs={12}>
                       <code>

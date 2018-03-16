@@ -46,7 +46,7 @@ class navbar extends Component {
               <img src={this.state.user.photoURL} alt={this.state.user.displayName} className="userImg" />
             </Col>
             <Col xs={4} md={4} xsOffset={1}>
-            <p className="userName">{this.state.user.displayName}</p>
+              <p className="userName">{this.state.user.displayName}</p>
             </Col>
             <Col xs={1} md={1} xsOffset={1}>
               <Button onClick={this.handleLogout} className="App-btn" bsStyle="link"> Salir </Button>
@@ -73,18 +73,6 @@ class navbar extends Component {
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-            <Nav>
-              <NavItem eventKey={2} href="#">
-                Link
-      </NavItem>
-              <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1}>Action</MenuItem>
-                <MenuItem eventKey={3.2}>Another action</MenuItem>
-                <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                <MenuItem divider />
-                <MenuItem eventKey={3.3}>Separated link</MenuItem>
-              </NavDropdown>
-            </Nav>
             <Nav pullRight>
               <NavItem eventKey={1} href="#">
                 {this.renderLoginButton()}
