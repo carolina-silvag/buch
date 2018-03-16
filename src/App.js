@@ -40,7 +40,7 @@ class App extends Component {
               <Row className="show-grid">
                 <Col xs={3} md={3} className="SectionSidebar">
                   <code>
-                    <Sidebar/>
+                    <Sidebar onUpdateBooksData={this.handleBooksData}/>
                   </code>
                 </Col>
                 <Col xs={12} sm={12} md={9} lg={9} className="SearchBooks">

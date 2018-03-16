@@ -8,7 +8,7 @@ import './sidebar.css';
 let url = `https://www.googleapis.com/books/v1/volumes?q=`;
 
 class sidebar extends Component {
-  /*  constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       text: '',
@@ -18,7 +18,7 @@ class sidebar extends Component {
     this.handleAuthor = this.handleAuthor.bind(this);
   }
 
-  handleCategory(category) {
+  handleAuthorgit(category) {
     fetch(`${url}${category}`, {
       method: 'get'
     })
@@ -31,7 +31,7 @@ class sidebar extends Component {
       })
       .catch(error => console.log(error))
   }
-*/
+
   render() {
     return (
       <div>
