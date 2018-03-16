@@ -19,4 +19,5 @@ Bienvenido a Buch, una plataforma donde puedes encontrar y comprar una amplia ga
 [![npm](https://img.shields.io/badge/firebase-4.11.0-brightgreen.svg)]()
 [![npm](https://img.shields.io/badge/react--redux-5.0.7-brightgreen.svg)]()
 
-
+## Dependencias:
+![alt text](https://github.com/ValeOlivares/buch/blob/master/public/wireframe.JPG?raw=true)
