@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, ButtonToolbar } from 'react-bootstrap';
+import { Modal, Button, ButtonToolbar, Row, Col } from 'react-bootstrap';
 import modalData from './modalData';
 
 let url = `https://www.googleapis.com/books/v1/volumes?q=`;
@@ -58,15 +58,31 @@ class ModalCompra extends Component {
           <Modal.Header closeButton>
           </Modal.Header>
           <Modal.Body>
-            <h4>{this.state.data.title}</h4>
-            <img src={this.state.data.image}/>
-            <p>
-              Ipsum molestiae natus adipisci modi eligendi? Debitis amet quae. 
-            </p>
+          <Row>
+            <Col className="text-center" md={12} xs={12}>
+              <h4>{this.state.data.title}</h4>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={6} xs={6}>
+              <img src={this.state.data.image}/>
+            </Col>
+            <Col md={6} xs={6}>
+              <p>{this.state.data.description}</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={12} xs={12}>
+              <p>$ {this.state.data.price} CLP</p>
+            </Col>
+          </Row>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.handleHide}>Close</Button>
-            <Button bsStyle="primary">Agregar</Button>
+            <Button bsStyle="primary"  class="heart fas fa-heart-cart fa-2x">
+            </Button>
+            <Button bsStyle="primary" class=" shopping fas fa-shopping-cart fa-2x">
+            </Button>
             <Button bsStyle="primary">Pagar</Button>
           </Modal.Footer>
         </Modal>
