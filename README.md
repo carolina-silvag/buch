@@ -1,4 +1,4 @@
-# Buch: El libro que quieres, ¡ahora! 
+# Buch: El libro que quieres ¡ahora! 
 
  * [Buch / Firebase](https://e-buch.firebaseapp.com/) 
  Bienvenido a Buch, una plataforma donde puedes encontrar y comprar una amplia gama de libros. Sea cual sea tú interés o pasión, encontraras algo interesante.
