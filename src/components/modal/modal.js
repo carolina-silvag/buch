@@ -68,7 +68,7 @@ class ModalCompra extends Component {
               <img src={this.state.data.image}/>
             </Col>
             <Col md={6} xs={6}>
-              <p>{this.state.data.description}</p>
+              {this.state.data.description}
             </Col>
           </Row>
           <Row>

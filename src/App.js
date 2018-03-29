@@ -18,8 +18,8 @@ class App extends Component {
   }
 
   handleBooksData(data) {
-    console.log('me llego', data);
-    this.setState({ booksData: data })
+    /*console.log('me llego', data);*/
+    this.setState({ booksData: data });
   }
   
   render() {
