@@ -46,7 +46,7 @@ class navbar extends Component {
               <img src={this.state.user.photoURL} alt={this.state.user.displayName} className="userImg" />
             </Col>
             <Col xs={4} md={4} xsOffset={1}>
-            <i class=" shopping fas fa-shopping-cart fa-2x"></i>
+            <i className=" shopping fas fa-shopping-cart fa-2x"></i>
             </Col>
             <Col xs={1} md={1} xsOffset={1}>
               <Button onClick={this.handleLogout} className="App-btn" bsStyle="link"> Salir </Button>

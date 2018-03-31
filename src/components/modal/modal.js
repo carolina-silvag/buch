@@ -30,6 +30,7 @@ class ModalCompra extends Component {
         const dataModal = modalData(modal_data);
         console.log(dataModal)
         this.setState({ data: dataModal });
+        console.log(this.state.data.description.split("<p>"))
         /*this.props.onUpdateBooksData(data);*/
       })
       .catch(error => console.log(error))
@@ -54,6 +55,7 @@ class ModalCompra extends Component {
           show={this.state.show}
           onHide={this.handleHide}
           dialogClassName="custom-modal"
+
         >
           <Modal.Header closeButton>
           </Modal.Header>
@@ -67,8 +69,7 @@ class ModalCompra extends Component {
             <Col md={6} xs={6}>
               <img src={this.state.data.image}/>
             </Col>
-            <Col md={6} xs={6}>
-              {this.state.data.description}
+            <Col md={6} xs={6} dangerouslySetInnerHTML={{ __html: this.state.data.description }}>
             </Col>
           </Row>
           <Row>
@@ -79,10 +80,8 @@ class ModalCompra extends Component {
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.handleHide}>Close</Button>
-            <Button bsStyle="primary"  class="heart fas fa-heart-cart fa-2x">
-            </Button>
-            <Button bsStyle="primary" class=" shopping fas fa-shopping-cart fa-2x">
-            </Button>
+            <i type="button" className="fas fa-heart fa-2x"></i>
+            <i type="button" className="fas fa-shopping-cart fa-2x"></i>
             <Button bsStyle="primary">Pagar</Button>
           </Modal.Footer>
         </Modal>
