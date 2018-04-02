@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class favs extends Component {
+class Heart extends Component {
   constructor(props) {
     super(props);
     this.state = { favorited: this.props.isFavorite };
@@ -38,4 +38,4 @@ class favs extends Component {
   }
 }
 
-export default favs;
+export default Heart;

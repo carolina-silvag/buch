@@ -1,0 +1,20 @@
+.toolbar {
+	display: inline-block;
+}
+
+.warning {
+    background: #ee9104; 
+    border: 0.3em solid #ee9104;
+}
+
+.image {
+	width: 70%;
+	height: 300px;
+}
+
+.heart {
+	margin: 0 2% 0 2%;
+}
+.shopping {
+	margin-right: 2%;
+}

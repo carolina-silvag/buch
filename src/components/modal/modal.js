@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, Button, ButtonToolbar, Row, Col } from 'react-bootstrap';
 import modalData from './modalData';
+import './modal.css'
 
 let url = `https://www.googleapis.com/books/v1/volumes?q=`;
 let name = 'literatura'
@@ -45,8 +46,8 @@ class ModalCompra extends Component {
   render() {
     const { data } = this.props;
     return (
-      <ButtonToolbar>
-        <Button onClick={() => this.handleShow(data)}>
+      <ButtonToolbar className="toolbar">
+        <Button className="warning" onClick={() => this.handleShow(data)}>
           COMPRAR
         </Button>
 
@@ -67,21 +68,17 @@ class ModalCompra extends Component {
           </Row>
           <Row>
             <Col md={6} xs={6}>
-              <img src={this.state.data.image}/>
-            </Col>
-            <Col md={6} xs={6} dangerouslySetInnerHTML={{ __html: this.state.data.description }}>
-            </Col>
-          </Row>
-          <Row>
-            <Col md={12} xs={12}>
+              <img className="image" src={this.state.data.image}/>
               <p>$ {this.state.data.price} CLP</p>
+            </Col>
+            <Col className="text-justify" md={6} xs={6} dangerouslySetInnerHTML={{ __html: this.state.data.description }}>
             </Col>
           </Row>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.handleHide}>Close</Button>
-            <i type="button" className="fas fa-heart fa-2x"></i>
-            <i type="button" className="fas fa-shopping-cart fa-2x"></i>
+            <i type="button" className="heart fas fa-heart fa-2x"></i>
+            <i type="button" className="shopping fas fa-shopping-cart fa-2x"></i>
             <Button bsStyle="primary">Pagar</Button>
           </Modal.Footer>
         </Modal>
@@ -89,44 +86,5 @@ class ModalCompra extends Component {
     );
   }
 }
-
-/*render(<Example />);*/
-
-/*class modal extends Component {
-  constructor(prop) {
-    super(prop);
-    this.state = {
-      text: '',
-      searchData: null
-    };
-
-    this.handleSearch = this.handleSearch.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  render() {
-    return (
-      <Modal {...this.props}
-        bsSize="large"
-        aria-labelledby="contained-modal-title-lg">
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-lg">Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4>Wrapped Text</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta
-            ac consectetur ac, vestibulum at eros.
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={this.props.onHide}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-    );
-  }
-
-}*/
 
 export default ModalCompra;

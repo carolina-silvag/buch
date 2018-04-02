@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavItem, Navbar, Nav, NavDropdown, MenuItem, Row, Col, Button } from 'react-bootstrap';
 import firebase from 'firebase';
 import buchlogo from './buchlogo.png';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
 import './navbar.css';
 
 class navbar extends Component {
@@ -13,6 +14,12 @@ class navbar extends Component {
     };
     this.handleAuth = this.handleAuth.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.handleShopping = this.handleShopping.bind(this);
+  }
+
+  handleShopping(open) {
+    console.log('he mandado el', open)
+    this.props.onUpdateShoppingData(open);
   }
 
   componentWillMount() {
@@ -41,23 +48,33 @@ class navbar extends Component {
     if (this.state.user) {
       return (
         <div>
-          <Row className="show-grid ">
-            <Col xs={1} md={1}>
+          <Nav pullRight>
+            <NavItem eventKey={1} href="/perfil">
+              {this.state.user.displayName}
               <img src={this.state.user.photoURL} alt={this.state.user.displayName} className="userImg" />
-            </Col>
-            <Col xs={4} md={4} xsOffset={1}>
-            <i className=" shopping fas fa-shopping-cart fa-2x"></i>
-            </Col>
-            <Col xs={1} md={1} xsOffset={1}>
+            </NavItem>
+            <NavItem eventKey={2} href="/shopping">
+              <i className="shopping fas fa-shopping-cart fa-2x"></i>
+            </NavItem>
+            <NavItem eventKey={3} href="/heart">
+              <i type="button" className="heart fas fa-heart fa-2x"></i>
+            </NavItem>
+            <NavItem eventKey={4} href="/">
               <Button onClick={this.handleLogout} className="App-btn" bsStyle="link"> Salir </Button>
-            </Col>
-          </Row>
+            </NavItem>
+
+          </Nav>
+          
         </div>
       );
       //si el usuario no está logeado
     } else {
       return (
-        <Button className="App-btn warning" onClick={this.handleAuth}> Login con Google </Button>
+        <Nav pullRight>
+          <NavItem eventKey={1} href="#">
+            <Button className="App-btn warning" onClick={this.handleAuth}> Login con Google </Button>
+          </NavItem>
+        </Nav>
       );
     }
   }
@@ -67,17 +84,13 @@ class navbar extends Component {
       <div className="navFont">
         <Navbar inverse collapseOnSelect>
           <Navbar.Header >
-            <Navbar.Brand>
-              <a href="#"><img className="logo" src={buchlogo} alt="Buch" /></a>
+            <Navbar.Brand><Link to="/home">
+              <img className="logo" src={buchlogo} alt="Buch" /></Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           </Navbar.Header>
           <Navbar.Collapse>
-            <Nav pullRight>
-              <NavItem eventKey={1} href="#">
-                {this.renderLoginButton()}
-              </NavItem>
-            </Nav>
+            {this.renderLoginButton()}          
           </Navbar.Collapse>
         </Navbar>
       </div>

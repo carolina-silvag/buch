@@ -27,8 +27,8 @@
   to { transform: rotate(360deg); }
 }
 
-.SectionSidebar {
-  border-right: 0.1em solid #6D6767;
+.SectionBook {
+  border-left: 0.1em solid #6D6767;
   margin-top: 2em;
 }
 

@@ -14,13 +14,15 @@ class books extends Component {
 
   renderBookItem(booksData) {
     return booksData.map(book=> {
-      return <Col className="cols" md={4} key={book.id}>
-                <h4>{book.title}</h4>
-                <img src={book.image}/>
-                <p>{book.author}</p>
-                <p>{book.price}</p>
-                <ModalCompra data={book.http}/>
-              </Col>
+      if(book.author !== "undefined") {
+        return <Col className="cols" md={4} key={book.id}>
+                  <h4>{book.title}</h4>
+                  <img src={book.image}/>
+                  <p>Autor: {book.author}</p>
+                  <p>$ {book.price}</p>
+                  <ModalCompra className="text-center" data={book.http}/>
+                </Col>    
+      }
     })
   };
 
@@ -30,7 +32,7 @@ class books extends Component {
     console.log(data, 'books')
     return(
       <Row>
-          {this.renderBookItem(data)}       
+        {this.renderBookItem(data)}       
       </Row>
       )
     }

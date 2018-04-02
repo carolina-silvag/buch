@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { FormGroup, FormControl, Button } from 'react-bootstrap';
+import { FormGroup, FormControl, Button, Row, Col } from 'react-bootstrap';
 import booksData from './../books/booksData';
 
 let url = `https://www.googleapis.com/books/v1/volumes?q=`;
 let name = 'literatura'
 
-class search extends Component {
+class Search extends Component {
   constructor(prop) {
     super(prop);
     this.state = {
@@ -72,13 +72,19 @@ class search extends Component {
     const { searchData } = this.state;
     return(
       <div>
-        <FormGroup>
-          <FormControl type="text" placeholder="Search" onChange={this.handleChange} value={this.state.text} />
-        </FormGroup>{''}
-        <Button type="submit" onClick={this.handleSearch}>Buscar</Button>
+        <Row>
+          <Col md={10}>
+            <FormGroup>
+              <FormControl type="text" placeholder="Search" onChange={this.handleChange} value={this.state.text} />
+            </FormGroup>{''}
+          </Col>
+          <Col md={2}>
+            <Button bsStyle="primary" onClick={this.handleSearch}>Buscar</Button>
+          </Col>
+        </Row>
       </div>
       )
     }
   }
         //{searchData.map(book=>{return <li>{book.title}</li>})}
-export default search;
+export default Search;
